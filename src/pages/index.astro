@@ -1,0 +1,93 @@
+---
+import Layout from "../layouts/Layout.astro";
+import IndexHeader from "../components/IndexHeader.astro";
+import Carousel from "../components/Carousel.astro";
+import Hero from "../components/Hero.astro";
+import Footer from "../components/IndexFooter.astro";
+---
+
+<Layout title="Huntgame" content="Huntgame">
+  <IndexHeader />
+  <main>
+    <Hero />
+    <section
+      class="bg-[#D20F89] flex px-7 py-20 gap-7 md:gap-11 text-white flex-col md:flex-row md:items-center sm:px-14 lg:px-36 md:pt-28"
+    >
+      <img
+        src="get_started.png"
+        alt=""
+        class="md:aspect-square md:w-1/2 xl:w-8/12"
+      />
+      <div class="w-9/12">
+        <p
+          class="text-[22px] md:text-3xl xl:text-[50px] xl:leading-normal bowlby-one-sc"
+        >
+          A SWIPE IS ALL YOU NEED TO FIND THAT LIFE CHANGING PARTNER.
+        </p>
+        <p class="text-sm lg:text-base mt-4 mb-7 lowercase bowlby-one">
+          JOIN THE RIGHT COMMUNITY TO FIND THE RIGHT ONE.
+        </p>
+        <button
+          class="rounded-[50px] py-3 px-5 bg-white text-[#D20F89] roboto font-extrabold text-sm"
+          id="getStarted">Get Started</button
+        >
+      </div>
+    </section>
+    <section class="px-7 bg-white pt-10 pb-16 sm:px-14 md:px-36 md:py-24">
+      <h3
+        class="text-[22px] lg:text-[50px] capitalize md:mb-7 md:text-center bowlby-one-sc w-9/12 md:w-full"
+      >
+        There’s more to huntgame
+      </h3>
+      <span class="flex flex-col gap-12 md:gap-6 md:flex-row-reverse">
+        <div class="flex gap-2 justify-between flex-col">
+          <img
+            src="huntgame_app.png"
+            alt=""
+            class="mx-[24%] my-[8%] md:hidden"
+          />
+          <img src="huntgame_app_desktop.png" alt="" class="hidden md:block" />
+          <span>
+            <h5 class="text-[22px] text-2xl bowlby-one">Huntgame app</h5>
+            <p class="text-sm">
+              Huntgame app is a unique dating app that fosters a community for
+              meaningful connections, social activities, and engaging
+              experiences.
+            </p>
+          </span>
+        </div>
+        <div class="flex gap-2 justify-between flex-col">
+          <img src="huntgame_show.png" alt="" class="w-full" />
+          <span>
+            <h5 class="text-[22px] text-2xl bowlby-one">Huntgame show</h5>
+            <p class="text-sm">
+              Each episode brings exciting twists, keeping viewers engaged. The
+              show’s adventurous format explores romance in an entertaining way.
+            </p>
+          </span>
+        </div>
+      </span>
+    </section>
+    <section
+      class="bg-primaryBg px-7 sm:px-14 lg:px-44 py-28 md:pb-36 gap-7 xl:gap-28 text-white flex flex-col md:flex-row md:items-center"
+    >
+      <img src="about_huntgame.png" alt="" class="w-full" />
+      <div class="w-11/12 mt-4 md:w-full">
+        <p
+          class="text-[22px] md:text-3xl xl:text-[50px] bowlby-one-sc xl:leading-snug"
+        >
+          WE PRIORITIZE GENUINE AND MEANINGFUL CONNECTIONS.
+        </p>
+        <p class="text-sm lg:text-base mt-2 mb-7 lowercase bowlby-one">
+          Meet someone of like mind, build a strong connection, fall in love.
+        </p>
+        <button
+          class="rounded-[50px] py-3 px-5 bg-white text-[#D20F89] roboto font-extrabold text-sm"
+          >About Huntgame</button
+        >
+      </div>
+    </section>
+    <Carousel />
+  </main>
+  <Footer />
+</Layout>

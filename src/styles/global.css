@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-bg-color: #8c0e5d;
+    --secondary-bg-color: #820b5a66;
+    --secondary-color: 320deg 84% 28%;
+    /* #C06E83 */
+    /* B5170C */
+  }
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color-scheme: light dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+.slide[data-active] {
+  opacity: 1 !important;
+  display: flex;
+  z-index: 1;
+  transition-delay: 0ms;
+}
+
+.bowlby-one {
+  font-family: "Bowlby One", cursive;
+}
+.bowlby-one-sc {
+  font-family: "Bowlby One SC", cursive;
+}
+.slackey {
+  font-family: slackey;
+}

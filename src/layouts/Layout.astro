@@ -1,0 +1,29 @@
+---
+import "@fontsource/bowlby-one";
+import "@fontsource/slackey";
+import "@fontsource/bowlby-one-sc";
+
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  content: string;
+}
+const { title, content } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="icon.png" />
+    <title>{title}</title>
+    <!-- <ViewTransitions /> -->
+    <meta name="description" {content} />
+  </head>
+
+  <body class="bg-white text-black overflow-x-hidden">
+    <slot />
+  </body>
+</html>
