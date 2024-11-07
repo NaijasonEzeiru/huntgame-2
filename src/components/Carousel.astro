@@ -9,7 +9,7 @@
   </p>
   <div class="relative" data-carousel>
     <button
-      class="bg-[#3A2323] rounded-full size-14 hidden lg:flex items-center justify-center absolute rotate-180 top-1/2 -translate-y-1/2"
+      class="bg-[#3A2323] rounded-full size-14 opacity-60 left-1 md:left-0 flex items-center justify-center absolute rotate-180 top-1/2 -translate-y-1/2"
       data-carousel-button="prev"
       ><svg
         width="12"
@@ -25,7 +25,7 @@
     </button>
     <button
       data-carousel-button="next"
-      class="bg-[#3A2323] rounded-full size-14 hidden lg:flex items-center justify-center absolute right-0 top-1/2 -translate-y-1/2"
+      class="bg-[#3A2323] rounded-full size-14 opacity-60 right-1 flex items-center justify-center absolute md:right-0 top-1/2 -translate-y-1/2"
       ><svg
         width="12"
         height="21"
@@ -40,15 +40,22 @@
     </button>
     <ul data-slides class="md:px-[84px]">
       <li
-        class="transition-opacity bg-white rounded-[10px] flex-col lg:flex-row inset-0 hidden slide"
+        class="transition-opacity bg-white rounded-[10px] md:rounded-[40px] flex-col md:flex-row inset-0 hidden slide"
         data-active
       >
         <img
           src="peter_and_vivian.png"
           alt=""
-          class="w-full rounded-t-[10px]"
+          class="w-full rounded-t-[10px] md:hidden aspect-square"
         />
-        <div class="bg-white text-black pb-[75px] pt-5 px-16 rounded-b-[10px]">
+        <img
+          src="peter_and_vivian_desk.png"
+          alt=""
+          class="rounded-l-[40px] hidden md:block w-1/2 aspect-[6/5]"
+        />
+        <div
+          class="bg-white text-black pb-[75px] pt-5 px-16 rounded-b-[10px] md:rounded-[40px] md:w-1/2 md:flex flex-col justify-center items-start"
+        >
           <h5 class="text-center text-xl bowlby-one-sc">Peter and vivian</h5><p>
             We met at huntgame and the rest is history, all thanks to huntgame
             show.
@@ -56,24 +63,42 @@
         </div>
       </li>
       <li
-        class="transition-opacity bg-white rounded-[10px] flex-col lg:flex-row inset-0 hidden slide"
+        class="transition-opacity bg-white rounded-[10px] md:rounded-[40px] flex-col md:flex-row inset-0 hidden slide"
       >
-        <img src="max_and_bella.png" alt="" class="w-full rounded-t-[10px]" />
-        <div class="bg-white text-black pb-[75px] pt-5 px-16 rounded-b-[10px]">
+        <img
+          src="max_and_bella.png"
+          alt=""
+          class="w-full rounded-t-[10px] md:hidden aspect-square"
+        />
+        <img
+          src="max_and_bella_desk.png"
+          alt=""
+          class="rounded-l-[40px] hidden md:block w-1/2 aspect-[6/5]"
+        />
+        <div
+          class="bg-white text-black pb-[75px] pt-5 px-16 rounded-b-[10px] md:rounded-[40px] md:w-1/2 md:flex flex-col justify-center items-start"
+        >
           <h5 class="text-center text-xl bowlby-one-sc">Max and Ella</h5><p>
             We cannot tell our love story without mentioning huntgame.
           </p>
         </div>
       </li>
       <li
-        class="transition-opacity bg-white rounded-[10px] flex-col lg:flex-row inset-0 hidden slide"
+        class="transition-opacity bg-white rounded-[10px] md:rounded-[40px] flex-col md:flex-row inset-0 hidden slide"
       >
         <img
           src="precious_and_mich.png"
           alt=""
-          class="w-full rounded-t-[10px]"
+          class="w-full rounded-t-[10px] md:hidden aspect-square"
         />
-        <div class="bg-white text-black pb-[75px] pt-5 px-16 rounded-b-[10px]">
+        <img
+          src="precious_and_mich_desk.png"
+          alt=""
+          class="rounded-l-[40px] hidden md:block w-1/2 aspect-[6/5]"
+        />
+        <div
+          class="bg-white text-black pb-[75px] pt-5 px-16 rounded-b-[10px] md:rounded-[40px] md:w-1/2 md:flex flex-col justify-center items-start"
+        >
           <h5 class="text-center text-xl bowlby-one-sc">Precious and Mich</h5><p
           >
             We met at huntgame and the rest is history, all thanks to huntgame
@@ -83,9 +108,9 @@
       </li>
     </ul>
     <div class="flex gap-2 items-center justify-center text-4xl mt-3 md:mt-12">
-      <button data-carousel-index="0">&bull;</button>
-      <button data-carousel-index="1">&bull;</button>
-      <button data-carousel-index="2">&bull;</button>
+      <button class="bull" data-carousel-index="0" data-idx>&bull;</button>
+      <button class="bull" data-carousel-index="1">&bull;</button>
+      <button class="bull" data-carousel-index="2">&bull;</button>
     </div>
   </div>
 </section>
@@ -96,6 +121,7 @@ const slides = document.querySelector("[data-slides]");
 indexes.forEach((index) => {
   index.addEventListener("click", () => {
     const activeSlide = slides?.querySelector("[data-active]");
+    const activeCarousel = document?.querySelector("[data-idx]");
     let activeIndex = [...slides?.children].indexOf(activeSlide);
     const carouselIndex = +index.dataset.carouselIndex;
 
@@ -103,7 +129,9 @@ indexes.forEach((index) => {
       return;
     } else {
       slides.children[carouselIndex].dataset.active = true;
+      indexes[carouselIndex].dataset.idx = true;
       delete activeSlide.dataset.active;
+      delete activeCarousel.dataset.idx;
     }
   });
 });
@@ -111,14 +139,16 @@ buttons.forEach((button) => {
   button.addEventListener("click", () => {
     const offset = button.dataset.carouselButton === "next" ? 1 : -1;
     const activeSlide = slides?.querySelector("[data-active]");
+    const activeCarousel = document?.querySelector("[data-idx]");
     let newIndex = [...slides?.children].indexOf(activeSlide) + offset;
     if (newIndex < 0) newIndex = slides?.children.length - 1;
     if (newIndex >= slides?.children.length) {
       newIndex = 0;
     }
-    console.log({ newIndex });
     slides.children[newIndex].dataset.active = true;
+    indexes[newIndex].dataset.idx = true;
     delete activeSlide.dataset.active;
+    delete activeCarousel.dataset.idx;
   });
 });
 </script>

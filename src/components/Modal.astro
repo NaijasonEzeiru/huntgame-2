@@ -1,0 +1,51 @@
+<div
+  class="relative z-10 hidden"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+  id="appDialog"
+>
+  <div
+    class="fixed inset-0 bg-gray-700 bg-opacity-85 transition-opacity"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="fixed inset-0 z-50 w-screen overflow-y-auto">
+    <div
+      class="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0"
+    >
+      <div
+        class="relative transform flex gap-1 w-[80%] flex-col justify-center items-center pt-10 pb-8 overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg"
+      >
+        <p class="text-primaryBg text-2xl font-extrabold">JOIN HUNTGAME</p>
+        <p class="text-black">Download the huntgame app today.</p>
+        <div class="flex gap-4 mx-6 mt-5 lg:mx-9">
+          <a
+            href="https://apkpure.com/group/thenewhuntersapp.huntersapp.hunt"
+            target="_blank"
+          >
+            <img
+              src="/play-store.png"
+              alt="link to our app on play store"
+              class="hover:border-2 border-primaryBg rounded"
+            />
+          </a>
+          <a
+            href="https://apps.apple.com/ng/app/huntgame/id6502562121"
+            target="_blank"
+          >
+            <img
+              src="app-store.png"
+              alt="link to our app on app store"
+              class="hover:border-2 border-primaryBg rounded"
+            />
+          </a>
+        </div>
+        <button
+          class="top-1 right-4 text-black absolute text-2xl"
+          id="closeDialog">X</button
+        >
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,6 +4,7 @@ import IndexHeader from "../components/IndexHeader.astro";
 import Carousel from "../components/Carousel.astro";
 import Hero from "../components/Hero.astro";
 import Footer from "../components/IndexFooter.astro";
+import Modal from "../components/Modal.astro";
 ---
 
 <Layout title="Huntgame" content="Huntgame">
@@ -29,7 +30,7 @@ import Footer from "../components/IndexFooter.astro";
         </p>
         <button
           class="rounded-[50px] py-3 px-5 bg-white text-[#D20F89] roboto font-extrabold text-sm"
-          id="getStarted">Get Started</button
+          data-open-modal>Get Started</button
         >
       </div>
     </section>
@@ -83,11 +84,12 @@ import Footer from "../components/IndexFooter.astro";
         </p>
         <button
           class="rounded-[50px] py-3 px-5 bg-white text-[#D20F89] roboto font-extrabold text-sm"
-          >About Huntgame</button
+          data-open-modal>About Huntgame</button
         >
       </div>
     </section>
     <Carousel />
+    <Modal />
   </main>
   <Footer />
 </Layout>

@@ -27,3 +27,18 @@ const { title, content } = Astro.props;
     <slot />
   </body>
 </html>
+<script is:inline>
+const openModalButtons = document.querySelectorAll("[data-open-modal]");
+const closeDialog = document.getElementById("closeDialog");
+const appDialog = document.getElementById("appDialog");
+
+openModalButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    appDialog?.classList.remove("hidden");
+  });
+});
+
+closeDialog?.addEventListener("click", () =>
+  appDialog?.classList.add("hidden")
+);
+</script>

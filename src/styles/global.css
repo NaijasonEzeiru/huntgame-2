@@ -29,6 +29,10 @@
   transition-delay: 0ms;
 }
 
+.bull[data-idx] {
+  color: rgb(52, 52, 52);
+}
+
 .bowlby-one {
   font-family: "Bowlby One", cursive;
 }
