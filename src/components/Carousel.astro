@@ -134,8 +134,9 @@ function switchImg(offset) {
   delete activeCarousel.dataset.idx;
 }
 function checkDirection() {
-  if (touchendX - touchstartX < -4) switchImg(-1);
-  if (touchendX - touchstartX > 4) switchImg(1);
+  console.log({ touchendX, touchstartX });
+  if (touchendX - touchstartX < -20) switchImg(-1);
+  if (touchendX - touchstartX > 20) switchImg(1);
 }
 slides.addEventListener("touchstart", (e) => {
   touchstartX = e.changedTouches[0].screenX;
