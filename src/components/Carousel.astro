@@ -9,7 +9,7 @@
   </p>
   <div class="relative" data-carousel>
     <button
-      class="bg-[#3A2323] rounded-full size-14 opacity-60 left-1 md:left-0 flex items-center justify-center absolute rotate-180 top-1/2 -translate-y-1/2"
+      class="bg-[#3A2323] rounded-full size-14 hidden left-1 md:left-0 md:flex items-center justify-center absolute rotate-180 top-1/2 -translate-y-1/2"
       data-carousel-button="prev"
       ><svg
         width="12"
@@ -25,7 +25,7 @@
     </button>
     <button
       data-carousel-button="next"
-      class="bg-[#3A2323] rounded-full size-14 opacity-60 right-1 flex items-center justify-center absolute md:right-0 top-1/2 -translate-y-1/2"
+      class="bg-[#3A2323] rounded-full size-14 hidden right-1 md:flex items-center justify-center absolute md:right-0 top-1/2 -translate-y-1/2"
       ><svg
         width="12"
         height="21"
@@ -115,9 +115,35 @@
   </div>
 </section>
 <script is:inline>
+let touchstartX = 0;
+let touchendX = 0;
 const buttons = document.querySelectorAll("[data-carousel-button]");
 const indexes = document.querySelectorAll("[data-carousel-index]");
 const slides = document.querySelector("[data-slides]");
+function switchImg(offset) {
+  const activeSlide = slides?.querySelector("[data-active]");
+  const activeCarousel = document?.querySelector("[data-idx]");
+  let newIndex = [...slides?.children].indexOf(activeSlide) + offset;
+  if (newIndex < 0) newIndex = slides?.children.length - 1;
+  if (newIndex >= slides?.children.length) {
+    newIndex = 0;
+  }
+  slides.children[newIndex].dataset.active = true;
+  indexes[newIndex].dataset.idx = true;
+  delete activeSlide.dataset.active;
+  delete activeCarousel.dataset.idx;
+}
+function checkDirection() {
+  if (touchendX < touchstartX) switchImg(-1);
+  if (touchendX > touchstartX) switchImg(1);
+}
+slides.addEventListener("touchstart", (e) => {
+  touchstartX = e.changedTouches[0].screenX;
+});
+slides.addEventListener("touchend", (e) => {
+  touchendX = e.changedTouches[0].screenX;
+  checkDirection();
+});
 indexes.forEach((index) => {
   index.addEventListener("click", () => {
     const activeSlide = slides?.querySelector("[data-active]");
@@ -138,17 +164,7 @@ indexes.forEach((index) => {
 buttons.forEach((button) => {
   button.addEventListener("click", () => {
     const offset = button.dataset.carouselButton === "next" ? 1 : -1;
-    const activeSlide = slides?.querySelector("[data-active]");
-    const activeCarousel = document?.querySelector("[data-idx]");
-    let newIndex = [...slides?.children].indexOf(activeSlide) + offset;
-    if (newIndex < 0) newIndex = slides?.children.length - 1;
-    if (newIndex >= slides?.children.length) {
-      newIndex = 0;
-    }
-    slides.children[newIndex].dataset.active = true;
-    indexes[newIndex].dataset.idx = true;
-    delete activeSlide.dataset.active;
-    delete activeCarousel.dataset.idx;
+    switchImg(offset);
   });
 });
 </script>
