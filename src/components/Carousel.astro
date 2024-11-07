@@ -120,7 +120,7 @@ let touchendX = 0;
 const buttons = document.querySelectorAll("[data-carousel-button]");
 const indexes = document.querySelectorAll("[data-carousel-index]");
 const slides = document.querySelector("[data-slides]");
-function switchImg(offset) {
+function switchImg(offset = 1) {
   const activeSlide = slides?.querySelector("[data-active]");
   const activeCarousel = document?.querySelector("[data-idx]");
   let newIndex = [...slides?.children].indexOf(activeSlide) + offset;
@@ -138,6 +138,9 @@ function checkDirection() {
   if (touchendX - touchstartX < -20) switchImg(-1);
   if (touchendX - touchstartX > 20) switchImg(1);
 }
+
+setInterval(switchImg, 3000);
+
 slides.addEventListener("touchstart", (e) => {
   touchstartX = e.changedTouches[0].screenX;
 });
