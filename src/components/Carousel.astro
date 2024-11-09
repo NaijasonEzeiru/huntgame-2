@@ -1,3 +1,12 @@
+---
+import { Image } from "astro:assets";
+
+import test1 from "../assets/testimonial-1.JPG";
+// import test1 from "../assets/testimonial-1.jpg";
+import test2 from "../assets/precious_and_mich.JPG";
+import test3 from "../assets/max_and_ella.JPG";
+---
+
 <section
   class="bg-[#D20F89] px-7 sm:px-14 lg:px-24 py-20 md:py-36 text-white"
   aria-label="testimonials"
@@ -43,15 +52,10 @@
         class="transition-opacity bg-white rounded-[10px] md:rounded-[40px] flex-col md:flex-row inset-0 hidden slide"
         data-active
       >
-        <img
-          src="testimonial-1.svg"
+        <Image
           alt="peter and vivian found love"
-          class="w-full rounded-t-[10px] md:hidden aspect-square"
-        />
-        <img
-          src="peter_and_vivian_desk.png"
-          alt="peter and vivian found love"
-          class="rounded-l-[40px] hidden md:block w-1/2 aspect-[6/5]"
+          src={test1}
+          class="w-full rounded-t-[10px] aspect-square object-cover md:aspect-[6/5] md:w-1/2 md:rounded-l-[40px] md:rounded-tr-none object-[100%_25%]"
         />
         <div
           class="bg-white text-black pb-[75px] pt-5 px-16 rounded-b-[10px] md:rounded-[40px] md:w-1/2 md:flex flex-col justify-center items-start"
@@ -65,15 +69,10 @@
       <li
         class="transition-opacity bg-white rounded-[10px] md:rounded-[40px] flex-col md:flex-row inset-0 hidden slide"
       >
-        <img
-          src="max_and_bella.png"
-          alt="max and bella found love"
-          class="w-full rounded-t-[10px] md:hidden aspect-square"
-        />
-        <img
-          src="max_and_bella_desk.png"
-          alt="max and bella found love"
-          class="rounded-l-[40px] hidden md:block w-1/2 aspect-[6/5]"
+        <Image
+          alt="peter and vivian found love"
+          src={test3}
+          class="w-full rounded-t-[10px] aspect-square object-cover md:aspect-[6/5] md:w-1/2 md:rounded-l-[40px] md:rounded-tr-none object-[100%_25%]"
         />
         <div
           class="bg-white text-black pb-[75px] pt-5 px-16 rounded-b-[10px] md:rounded-[40px] md:w-1/2 md:flex flex-col justify-center items-start"
@@ -86,15 +85,10 @@
       <li
         class="transition-opacity bg-white rounded-[10px] md:rounded-[40px] flex-col md:flex-row inset-0 hidden slide"
       >
-        <img
-          src="precious_and_mich.png"
-          alt="precious and mich found love"
-          class="w-full rounded-t-[10px] md:hidden aspect-square"
-        />
-        <img
-          src="precious_and_mich_desk.png"
-          alt="precious and mich found love"
-          class="rounded-l-[40px] hidden md:block w-1/2 aspect-[6/5]"
+        <Image
+          alt="peter and vivian found love"
+          src={test2}
+          class="w-full rounded-t-[10px] aspect-square object-cover md:aspect-[6/5] md:w-1/2 md:rounded-l-[40px] md:rounded-tr-none object-[100%_20%]"
         />
         <div
           class="bg-white text-black pb-[75px] pt-5 px-16 rounded-b-[10px] md:rounded-[40px] md:w-1/2 md:flex flex-col justify-center items-start"
@@ -139,7 +133,7 @@ function checkDirection() {
   if (touchendX - touchstartX > 20) switchImg(1);
 }
 
-setInterval(switchImg, 3000);
+// setInterval(switchImg, 3000);
 
 slides.addEventListener("touchstart", (e) => {
   touchstartX = e.changedTouches[0].screenX;
